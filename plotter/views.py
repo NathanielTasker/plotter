@@ -7,13 +7,11 @@ from .models import Plot, Point
 
 
 def index(request):
+    print('index is called!') #for test
     return render(request, 'plotter/index.html')
-    # template = loader.get_template('plotter/index.html')
-    # context = {}
-    # return HttpResponse(template.render(context, request))
 
 def plot(request):
-    print('plot is called')
+    print('plot is called') #for test
     if request.POST['plot_name']:
         plot_name = str(request.POST['plot_name'])
     else:
