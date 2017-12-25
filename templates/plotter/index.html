@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>plotter</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'plotter/style.css' %}" />
+    </head>
+
+    <body>
+        <h1>plotter</h1>
+        <form acrion="{% url 'plotter:plot' %}" method="post">
+            {% csrf_token %}
+            <p><label for="plot_name">title(optional)<input type="text" name="plot_name" size="60" class="title"></label></p>
+            <div class="plot_area">
+                <div class="right">
+                    <label for="right"><input type="text" name="right" value="right" /></label>
+                </div>
+                <div class="clearfix">
+                    <div class="bottom">
+                        <label for="bottom"><input type="text" name="bottom" value="bottom" /></label>
+                    </div>
+                    <div class="field">
+                    </div>
+                    <div class="top">
+                        <label for="top"><input type="text" name="top" value="y2" /></label>
+                    </div>
+                </div>
+                <div class="left">
+                    <label for="left"><input type="text" name="left" value="left" /></label>
+                </div>
+            </div>
+            <input type="submit" value="plot" class="button">
+        </form>
+
+        <a href="{% url 'plotter:edit' 100 %}"><p>[for test] edit plot100</p></a>
+        <a href="{% url 'plotter:plot' %}"><p>[for test] plot</p></a>
+    </body>
+
+</html>
