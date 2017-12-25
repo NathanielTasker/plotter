@@ -6,9 +6,11 @@ from django.utils import timezone
 from .models import Plot, Point
 
 
-def index(request):     
-    print('index is called')
+def index(request):
     return render(request, 'plotter/index.html')
+    # template = loader.get_template('plotter/index.html')
+    # context = {}
+    # return HttpResponse(template.render(context, request))
 
 def plot(request):
     print('plot is called')
@@ -36,7 +38,7 @@ def results(request, plot_id):
     return render(request, 'plotter/results.html', context)
 
 def edit(request, plot_id):
-    return HttpResponse("You're editing plot %s." %plot_id)
+    return HttpResponse("You're editing plot %s." % plot_id)
 
 def posted(request):
     return render(request, 'plotter/posted.html')
