@@ -44,23 +44,23 @@ input{
     content: "_"
 }
 
-.left {
-    width: 200px;
-    margin: auto;
-}
-
-.right {
+.top {
     width: 200px;
     margin: auto;
 }
 
 .bottom {
     width: 200px;
+    margin: auto;
+}
+
+.left {
+    width: 200px;
     margin: 268px auto 268px auto;
     float: left;
 }
 
-.top {
+.right {
     width: 200px;
     margin: 268px auto 268px auto;
     float: left;
