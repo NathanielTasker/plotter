@@ -11,7 +11,7 @@ def index(request):
     return render(request, 'plotter/index.html')
 
 def plot(request):
-    print('create is called')
+    print('plot is called')
     if request.POST['plot_name']:
         plot_name = str(request.POST['plot_name'])
     else:
