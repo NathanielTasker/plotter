@@ -16,10 +16,10 @@ def plot(request):
         plot_name = request.POST['plot_name']
     else:
         plot_name = None
-    left = str(request.POST['left'])
-    right = str(request.POST['right'])
-    top = str(request.POST['top'])
-    bottom = str(request.POST['bottom'])
+    left = request.POST['left']
+    right = request.POST['right']
+    top = request.POST['top']
+    bottom = request.POST['bottom']
 
     new_plot = Plot(name=plot_name, left=left, right=right, top=top, bottom=bottom, creator='@test_creator', creation_date=timezone.now())
     new_plot.save()
