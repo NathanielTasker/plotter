@@ -13,7 +13,7 @@ def index(request):
 def plot(request):
     print('plot is called') #for test
     if request.POST['plot_name']:
-        plot_name = str(request.POST['plot_name'])
+        plot_name = request.POST['plot_name']
     else:
         plot_name = None
     left = str(request.POST['left'])
