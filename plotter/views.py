@@ -38,7 +38,7 @@ def plot(request):
                 
                 new_plot.point_set.create(name=point_name, color=point_color, x=point_x, y=point_y, belong_plot=new_plot)
         except:
-            print('no point was found')
+            print('no point was found') #just for test
             break
 
     context = {
