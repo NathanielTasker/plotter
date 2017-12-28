@@ -7,11 +7,9 @@ from .models import Plot, Point
 
 
 def index(request):
-    print('index is called!') #for test
     return render(request, 'plotter/index.html')
 
 def plot(request):
-    print('plot is called') #for test
     if request.POST['plot_name']:
         plot_name = request.POST['plot_name']
     else:
@@ -24,17 +22,23 @@ def plot(request):
     new_plot = Plot(name=plot_name, left=left, right=right, top=top, bottom=bottom, creator='@test_creator', creation_date=timezone.now())
     new_plot.save()
 
-    points_count = 0
-    for point_num in range(100):
-        if request.POST['point_%s' % point_num]:
-            point_name = request.POST['point_name_%s' % point_num]
-            if request.POST['point_color_%s' % point_num]:
-                point_color = request.POST['point_color_%s' % point_num]
-            point_x = request.POST['point_x_%s' % point_num]
-            point_y = request.POST['point_y_%s' % point_num]
-            new_plot.point_set.create(name=point_name, color=point_color, x=point_x, y=point_y, belong_plot=new_plot)
-            points_count += 1
-        else:
+    for count in range(100):
+        point_num = count + 1
+        try:
+            if request.POST['point_name_%s' % point_num]:
+                point_name = request.POST['point_name_%s' % point_num]
+
+                if request.POST['point_color_%s' % point_num]:
+                    point_color = request.POST['point_color_%s' % point_num]
+                else:
+                    point_color = None
+                
+                point_x = int(request.POST['point_x_%s' % point_num]) #int() is just for test
+                point_y = int(request.POST['point_y_%s' % point_num]) #int() is just for test
+                
+                new_plot.point_set.create(name=point_name, color=point_color, x=point_x, y=point_y, belong_plot=new_plot)
+        except:
+            print('no point was found')
             break
 
     context = {

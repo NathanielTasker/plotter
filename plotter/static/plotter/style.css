@@ -74,4 +74,12 @@ input{
     background-color: #ffffff;
     float: left;
     content: "_";
+    position:;
 }
+
+/*.point_form{
+    position: 'absolute',
+    left: clickX,
+    top:  clickY,
+    backgroundColor: "#aaaaaa"
+}*/

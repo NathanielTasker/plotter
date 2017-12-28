@@ -1,4 +1,10 @@
-document.getElementById( "plot_area" ).addEventListener( "click", function( event ) {
+var points = 0;
+
+document.getElementById('plot_area').innerHTML = '_';
+
+$(this).on("click", function(event){
+    points ++;
+
     var clickX = event.pageX ;
     var clickY = event.pageY ;
 
@@ -8,17 +14,14 @@ document.getElementById( "plot_area" ).addEventListener( "click", function( even
 
     var x = clickX - positionX ;
     var y = clickY - positionY ;
-} ) ;
 
-var points = 0;
-
-document.getElementById('plot_area').innerHTML = '_';
-$(this).on("click", function(e){
-    $('body').append($("<p><label for='point_" + points + "'><input type='text' name='point_name_" + points + "' /></label></p><div class='color picker'>color picker</div><p><input type='text' name='point_x_" + points + "' value=" + x + " /></p><p><input type='text' name='point_y_" + points + "' value=" + y + " /></p>").css({
-            position: 'absolute',
-            left: e.pageX,
-            top:  e.pageY,
-            backgroundColor: "#aaaaaa"
+    // $('plot_area').append($("<div class='point_form'><p><label for='point_" + points + "'><input type='text' name='point_name_" + points + "' /></label></p><div class='color picker'>color picker</div><p><input type='text' name='point_x_" + points + "' value=" + x + " /></p><p><input type='text' name='point_y_" + points + "' value=" + y + " /></p></div>").css({
+    $('plot_area').append($("<p>add point here!</p>").css({
+        position: 'absolute',
+        left: clickX,
+        top:  clickY,
+        backgroundColor: "#aaaaaa"
     }));
-    var points +=1;
+
+    return points;
 });
