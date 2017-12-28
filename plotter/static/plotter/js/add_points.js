@@ -1,10 +1,7 @@
 var points = 0;
 
-document.getElementById('plot_area').innerHTML = '_';
-
-$(this).on("click", function(event){
-    points ++;
-
+document.getElementById( "plot_area" ).addEventListener( "click", function( event ) {
+    console.log('hi'); //just for test
     var clickX = event.pageX ;
     var clickY = event.pageY ;
 
@@ -23,5 +20,7 @@ $(this).on("click", function(event){
         backgroundColor: "#aaaaaa"
     }));
 
+    points ++;
+    console.log(points); //just for test
     return points;
 });
