@@ -66,6 +66,10 @@ input{
     float: left;
 }
 
+.display_none {
+    display: none;
+}
+
 #plot_area {
     width: 560px;
     height: 560px;
