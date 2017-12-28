@@ -13,7 +13,7 @@
         <form action="{% url 'plotter:plot' %}" method="post">
             {% csrf_token %}
             <p><label for="plot_name">title(optional)<input type="text" name="plot_name" size="60" class="title"></label></p>
-            <div class="plot_area">
+            <div class="plot_whole">
                 <div class="top">
                     <label for="top"><input type="text" name="top" /></labeel>
                 </div>
@@ -21,7 +21,7 @@
                     <div class="left">
                         <label for="left"><input type="text" name="left" /></label>
                     </div>
-                    <div class="field">
+                    <div id="plot_area">
                     </div>
                     <div class="right">
                         <label for="right"><input type="text" name="right" /></label>
