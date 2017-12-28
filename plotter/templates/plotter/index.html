@@ -10,12 +10,12 @@
 
     <body>
         <h1>plotter</h1>
-        <form acrion="{% url 'plotter:plot' %}" method="post">
+        <form action="{% url 'plotter:plot' %}" method="post">
             {% csrf_token %}
             <p><label for="plot_name">title(optional)<input type="text" name="plot_name" size="60" class="title"></label></p>
             <div class="plot_area">
                 <div class="top">
-                    <label for="top"><input type="text" name="top" /></label>
+                    <label for="top"><input type="text" name="top" /></labeel>
                 </div>
                 <div class="clearfix">
                     <div class="left">
