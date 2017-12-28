@@ -12,6 +12,7 @@ document.getElementById( "plot_area" ).addEventListener( "click", function( even
 
 var points = 0;
 
+document.getElementById('plot_area').innerHTML = '_';
 $(this).on("click", function(e){
     $('body').append($("<p><label for='point_" + points + "'><input type='text' name='point_name_" + points + "' /></label></p><div class='color picker'>color picker</div><p><input type='text' name='point_x_" + points + "' value=" + x + " /></p><p><input type='text' name='point_y_" + points + "' value=" + y + " /></p>").css({
             position: 'absolute',
