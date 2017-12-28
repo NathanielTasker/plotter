@@ -10,6 +10,10 @@
 
     <body>
         <p>plot {{ plot_id }} has generated successfully!</p>
+
+        <p><a href="{% url 'plotter:posted' %}">post this plot to SNS</a></p>
+
+        <p><a href="{% url 'plotter:index' %}">plot more</a></p>
     </body>
 
 </html>
