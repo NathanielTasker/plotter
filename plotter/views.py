@@ -24,12 +24,17 @@ def plot(request):
     new_plot = Plot(name=plot_name, left=left, right=right, top=top, bottom=bottom, creator='@test_creator', creation_date=timezone.now())
     new_plot.save()
 
-    # for point in points:
-    #     point_name = request.POST['point_name']
-    #     point_color = request.POST['point_color']
-    #     point_x = request.POST['point_x']
-    #     point_y = request.POST['point_y']
-    #     new_plot.point_set.create(name=point_name, color=point_color, x=point_x, y=point_y, belong_plot=new_plot)
+    points_count = 0
+    for point_num in range(100):
+        if request.POST['point_%s' % point_num]:
+            point_name = request.POST['point_name_%s' % point_num]
+            if request.POST['point_color_%s' % point_num]:
+                point_color = request.POST['point_color_%s' % point_num]
+            point_x = request.POST['point_x_%s' % point_num]
+            point_y = request.POST['point_y_%s' % point_num]
+            new_plot.point_set.create(name=point_name, color=point_color, x=point_x, y=point_y, belong_plot=new_plot)
+            points_count += 1
+        else:
 
     context = {
         'map_id': new_plot.id,
