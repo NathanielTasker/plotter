@@ -70,6 +70,10 @@ input{
     display: none;
 }
 
+.del_point {
+    color: #bbbbbb;
+}
+
 #plot_area {
     width: 560px;
     height: 560px;
