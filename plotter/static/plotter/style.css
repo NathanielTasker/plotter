@@ -70,11 +70,6 @@ input{
     display: none;
 }
 
-.img_colors {
-    width: 20px;
-    height: 20px;
-}
-
 #plot_area {
     width: 560px;
     height: 560px;
