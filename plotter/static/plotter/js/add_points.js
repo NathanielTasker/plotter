@@ -13,7 +13,7 @@ document.getElementById( "plot_area" ).addEventListener( "click", function( even
     var x = clickX - positionX ;
     var y = clickY - positionY ;
 
-    $('#plot_area').append($("<div class='point_form'><p><label for='point_" + points + "'><input type='text' name='point_name_" + points + "' id='point_name_" + points + "' /></label></p><input type='text' name='point_x_" + points + "' value=" + x + " class='display_none' /><input type='text' name='point_y_" + points + "' value=" + y + " class='display_none' /></div>").css({
+    $('#plot_area').append($("<div class='point_form'><p><label for='point_" + points + "'><input type='text' name='point_name_" + points + "' id='point_name_" + points + "' /></label><img class='img_colors' src=\"{% static \'plotter/images/colors.png\' %}\"></p><input type='text' name='point_x_" + points + "' value=" + x + " class='display_none' /><input type='text' name='point_y_" + points + "' value=" + y + " class='display_none' /></div>").css({
         position: 'absolute',
         left: clickX,
         top:  clickY,
