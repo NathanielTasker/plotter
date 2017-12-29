@@ -13,7 +13,7 @@ document.getElementById( "plot_area" ).addEventListener( "dblclick", function( e
     var x = clickX - positionX ;
     var y = clickY - positionY ;
 
-    $('#plot_area').append($("<div class='point_form id='point_form_" + point_num + "'><p><label for='point_" + point_num + "'><input type='text' name='point_name_" + point_num + "' id='point_name_" + point_num + "' /><span class='del_point' id='del_point_" + point_num + "'>&ensp;x</span></label></p><input type='text' name='point_x_" + point_num + "' value=" + x + " class='display_none' /><input type='text' name='point_y_" + point_num + "' value=" + y + " class='display_none' /></div>").css({
+    $('#plot_area').append($("<div class='point_form id='point_form_" + point_num + "'><p><label for='point_" + point_num + "'><input type='text' name='point_name_" + point_num + "' id='point_name_" + point_num + "' /><span class='del_point' id='del_point_" + point_num + "'>&ensp;x</span></label></p><input type='hidden' name='point_x_" + point_num + "' value=" + x + " /><input type='hidden' name='point_y_" + point_num + "' value=" + y + " /></div>").css({
         position: 'absolute',
         left: clickX,
         top:  clickY,

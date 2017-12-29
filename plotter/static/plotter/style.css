@@ -66,10 +66,6 @@ input{
     float: left;
 }
 
-.display_none {
-    display: none;
-}
-
 .del_point {
     color: #bbbbbb;
 }

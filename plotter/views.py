@@ -27,18 +27,21 @@ def plot(request):
         try:
             if request.POST['point_name_%s' % point_num]:
                 point_name = request.POST['point_name_%s' % point_num]
+                print('point_name was found') # just for test
 
                 if request.POST['point_color_%s' % point_num]:
                     point_color = request.POST['point_color_%s' % point_num]
                 else:
                     point_color = None
                 
-                point_x = int(request.POST['point_x_%s' % point_num]) #int() is just for test
-                point_y = int(request.POST['point_y_%s' % point_num]) #int() is just for test
+                point_x = int(request.POST['point_x_%s' % point_num]) # int() is just for test
+                print('point_x were found') # just for test
+                point_y = int(request.POST['point_y_%s' % point_num]) # int() is just for test
+                print('point_y were found') # just for test
                 
                 new_plot.point_set.create(name=point_name, color=point_color, x=point_x, y=point_y, belong_plot=new_plot)
         except:
-            print('no point was found') #just for test
+            print('saving points was failed') # just for test
             break
 
     context = {
