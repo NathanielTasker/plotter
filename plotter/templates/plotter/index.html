@@ -13,6 +13,7 @@
         <form action="{% url 'plotter:plot' %}" method="post">
             {% csrf_token %}
             <p><label for="plot_name">title(optional)<input type="text" name="plot_name" size="60" class="title"></label></p>
+            <p>double-click to add point</p>
             <div class="plot_whole">
                 <div class="top">
                     <label for="top"><input type="text" name="top" /></label>
