@@ -7,7 +7,6 @@ class Plot(models.Model):
     right = models.CharField(max_length=40)
     top = models.CharField(max_length=40)
     bottom = models.CharField(max_length=40)
-    creator = models.CharField(max_length=20)
     creation_date = models.DateTimeField()
     def __str__(self):
         return str(self.id) + ': ' + self.name    
