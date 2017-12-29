@@ -34,6 +34,7 @@ def plot(request):
                 else:
                     point_color = None
                 
+                print(request.POST['point_x_%s' % point_num]) # just for test
                 point_x = int(request.POST['point_x_%s' % point_num]) # int() is just for test
                 print('point_x were found') # just for test
                 point_y = int(request.POST['point_y_%s' % point_num]) # int() is just for test
