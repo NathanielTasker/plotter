@@ -19,7 +19,7 @@ def plot(request):
     top = request.POST['top']
     bottom = request.POST['bottom']
 
-    new_plot = Plot(name=plot_name, left=left, right=right, top=top, bottom=bottom, creator='@test_creator', creation_date=timezone.now())
+    new_plot = Plot(name=plot_name, left=left, right=right, top=top, bottom=bottom, creation_date=timezone.now())
     new_plot.save()
 
     for count in range(100):
