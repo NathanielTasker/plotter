@@ -19,30 +19,27 @@ def plot(request):
     top = request.POST['top']
     bottom = request.POST['bottom']
 
-    new_plot = Plot(name=plot_name, left=left, right=right, top=top, bottom=bottom, creator='@test_creator', creation_date=timezone.now())
+    new_plot = Plot(name=plot_name, left=left, right=right, top=top, bottom=bottom, creation_date=timezone.now())
     new_plot.save()
 
     for count in range(100):
         point_num = count + 1
         try:
-            if request.POST['point_name_%s' % point_num]:
-                point_name = request.POST['point_name_%s' % point_num]
-                print('point_name was found') # just for test
+            point_name = request.POST['point_name_%s' % point_num]
 
-                if request.POST['point_color_%s' % point_num]:
-                    point_color = request.POST['point_color_%s' % point_num]
-                else:
-                    point_color = None
-                
-                print(request.POST['point_x_%s' % point_num]) # just for test
-                point_x = int(request.POST['point_x_%s' % point_num]) # int() is just for test
-                print('point_x were found') # just for test
-                point_y = int(request.POST['point_y_%s' % point_num]) # int() is just for test
-                print('point_y were found') # just for test
-                
-                new_plot.point_set.create(name=point_name, color=point_color, x=point_x, y=point_y, belong_plot=new_plot)
+            # if request.POST['point_color_%s' % point_num]:
+            #     point_color = request.POST['point_color_%s' % point_num]
+            # else:
+            #     point_color = '000000'
+            
+            point_x = float(request.POST['point_x_%s' % point_num]) # float() is just for test
+            print('point_x is %s' % request.POST['point_x_%s' % point_num]) # just for test
+            point_y = float(request.POST['point_y_%s' % point_num]) # float() is just for test
+            print('point_y is %s' % request.POST['point_y_%s' % point_num]) # just for test
+            
+            new_plot.point_set.create(name=point_name, color='000000', x=point_x, y=point_y, belong_plot=new_plot)
+
         except:
-            print('saving points was failed') # just for test
             break
 
     context = {

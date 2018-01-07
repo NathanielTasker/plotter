@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Plot(models.Model):
-    name = models.CharField(max_length=40, null=True)
+    name = models.CharField(max_length=40)
     left = models.CharField(max_length=40)
     right = models.CharField(max_length=40)
     top = models.CharField(max_length=40)
