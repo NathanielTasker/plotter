@@ -19,6 +19,9 @@
                     <p>{{ plot.left }}</p>
                 </div>
                 <div id="plot_area">
+                    {% for point in plot.point_set.all %}
+
+                    {% endfor %}
                 </div>
                 <div class="right">
                     <p>{{ plot.right }}</p>
@@ -33,5 +36,8 @@
 
         <p><a href="{% url 'plotter:index' %}">plot more</a></p>
     </body>
+
+    <script type="text/javascript" src="{% static 'plotter/js/jquery-3.2.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plotter/js/show_points.js' %}"></script>
 
 </html>
