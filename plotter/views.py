@@ -43,12 +43,15 @@ def plot(request):
             break
 
     context = {
-        'map_id': new_plot.id,
+        'plot': new_plot,
+        'plot_id': new_plot.id,
     }
     return render(request, 'plotter/results.html', context)
 
 def results(request, plot_id):
+    plot = Plot.objects.get(pk=plot_id)
     context = {
+        'plot': plot,
         'plot_id': plot_id,
     }
     return render(request, 'plotter/results.html', context)

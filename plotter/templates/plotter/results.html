@@ -9,7 +9,25 @@
     </head>
 
     <body>
-        <p>plot {{ plot_id }} has generated successfully!</p>
+        <p>{{ plot.name }}</p>
+        <div class="plot_whole">
+            <div class="top">
+                <p>{{ plot.top }}</p>
+            </div>
+            <div class="clearfix">
+                <div class="left">
+                    <p>{{ plot.left }}</p>
+                </div>
+                <div id="plot_area">
+                </div>
+                <div class="right">
+                    <p>{{ plot.right }}</p>
+                </div>
+            </div>
+            <div class="bottom">
+                <p>{{ plot.bottom }}</p>
+            </div>
+        </div>
 
         <p><a href="{% url 'plotter:posted' %}">post this plot to SNS</a></p>
 
