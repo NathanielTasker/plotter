@@ -22,7 +22,6 @@ document.getElementById( "plot_area" ).addEventListener( "dblclick", function( e
     var focusElm = document.getElementById("point_name_" + point_num);
     focusElm.focus();
 
-    console.log(point_num); //just for test
     return point_num;
 });
 
