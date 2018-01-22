@@ -5,6 +5,10 @@ from django.utils import timezone
 
 from .models import Plot, Point
 
+from mpl_toolkits.axes_grid.axislines import SubplotZero
+import matplotlib.pyplot as plt
+import numpy as np
+
 
 def index(request):
     return render(request, 'plotter/index.html')
@@ -19,34 +23,48 @@ def plot(request):
     top = request.POST['top']
     bottom = request.POST['bottom']
 
-    new_plot = Plot(name=plot_name, left=left, right=right, top=top, bottom=bottom, creation_date=timezone.now())
-    new_plot.save()
+    points = []
+    points_x = []
+    points_y = []
 
     for count in range(100):
         point_num = count + 1
         try:
-            point_name = request.POST['point_name_%s' % point_num]
-
-            # if request.POST['point_color_%s' % point_num]:
-            #     point_color = request.POST['point_color_%s' % point_num]
-            # else:
-            #     point_color = '000000'
-            
-            point_x = float(request.POST['point_x_%s' % point_num]) # float() is just for test
-            print('point_x is %s' % request.POST['point_x_%s' % point_num]) # just for test
-            point_y = float(request.POST['point_y_%s' % point_num]) # float() is just for test
-            print('point_y is %s' % request.POST['point_y_%s' % point_num]) # just for test
-            
-            new_plot.point_set.create(name=point_name, color='000000', x=point_x, y=point_y, belong_plot=new_plot)
-
+            points.append(request.POST['point_name_%s' % point_num])
+            points_x.append(float(request.POST['point_x_%s' % point_num]) - 300) # float() is just for test
+            points_y.append(300 - float(request.POST['point_y_%s' % point_num])) # float() is just for test
         except:
             break
 
-    context = {
-        'plot': new_plot,
-        'plot_id': new_plot.id,
-    }
-    return render(request, 'plotter/results.html', context)
+    if 1:
+        fig = plt.figure(1)
+        ax = SubplotZero(fig, 111)
+        fig.add_subplot(ax)
+
+        for direction in ["xzero", "yzero"]:
+            ax.axis[direction].set_visible(True)
+
+        for direction in ["left", "right", "bottom", "top"]:
+            ax.axis[direction].set_visible(False)
+
+    plt.scatter(points_x, points_y)
+    for point, x, y in zip(points, points_x, points_y):
+        plt.annotate(point, xy=(x, y), xytext=(5, -5), textcoords='offset points')
+
+    plt.gca().set_xlim([0, 600])
+    plt.gca().set_ylim([0, 600])
+    plt.axis("equal")
+    plt.xlabel('%s - %s' % (left, right), fontdict={'family': 'Arial'})
+    plt.ylabel('%s - %s' % (bottom, top), fontdict={'family': 'Arial'})
+    plt.title(plot_name)
+
+    plt.show()
+
+    # context = {
+    #     'plot': new_plot,
+    #     'plot_id': new_plot.id,
+    # }
+    # return render(request, 'plotter/results.html', context)
 
 def results(request, plot_id):
     plot = Plot.objects.get(pk=plot_id)
